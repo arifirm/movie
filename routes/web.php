@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MoviesController;
+use App\Http\Controllers\CastController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/movie', function () {
-    return view('movie');
-});
+Route::get('/movie', [App\Http\Controllers\MoviesController::class, 'index']);
+Route::resource('movies', MoviesController::class);
+Route::resource('casts', CastsController::class);
