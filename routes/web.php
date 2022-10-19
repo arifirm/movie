@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\CastController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,5 @@ Route::get('/', function () {
 Route::get('/movie', [App\Http\Controllers\MoviesController::class, 'index']);
 Route::resource('movies', MoviesController::class);
 Route::resource('casts', CastsController::class);
+
+Route::get('/login', [LoginController::class, 'index']);
