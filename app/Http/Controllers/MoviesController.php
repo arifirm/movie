@@ -39,13 +39,14 @@ class MoviesController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            //'genre_id' => 'required',
             'image' => 'required',
             'rating_star' => 'required',
             'description' => 'required'
         ]);
 
         $movie = Movie::create($request->all());
-        return redirect()->route('movies.show', $movie->id);
+        return redirect()->route('movies.index', $movie->id);
     }
 
     /**
@@ -57,7 +58,7 @@ class MoviesController extends Controller
     public function show(movies $movies)
     {
         $casts = casts::all();
-        return view('movies.show', compact('movie', 'casts'));
+        return view('movies.show', compact('movies', 'casts'));
     }
 
     /**
